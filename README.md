@@ -239,7 +239,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For support and questions:
 - 📧 Email: hello@petparadise.com
 - 📱 Phone: 1-800-PET-CARE (738-2273)
-- 🌐 Website: [petparadise.com](https://petparadise.com)
+- 🌐 Website: [https://pet76.netlify.app/](https://pet76.netlify.app/)
 
 ---
 

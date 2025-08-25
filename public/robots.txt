@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /account/
+Disallow: /_next/
+Disallow: /thank-you/
+
+# Allow important pages
+Allow: /
+Allow: /dogs
+Allow: /cats
+Allow: /birds
+Allow: /fish
+Allow: /small-pets
+Allow: /reptiles
+Allow: /products/
+Allow: /categories/
+
+# Sitemap location
+Sitemap: https://pet-paradise.netlify.app/sitemap.xml

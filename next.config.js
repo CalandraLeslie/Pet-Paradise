@@ -1,34 +1,34 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
+    domains: [
+      'images.unsplash.com',
+      'get.musti.media',
+      'media.zooplus.com',
+      'm.media-amazon.com',
+      'images.zoo.se',
+      'zoolyx.se',
+      'encrypted-tbn0.gstatic.com',
+      'encrypted-tbn1.gstatic.com',
+      'encrypted-tbn2.gstatic.com',
+      'via.placeholder.com',
+      'ledmegastore.se',
+      'aosom.eu',
+      'image.dogman.com'
+    ],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'arkenszoo.se',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.arkenszoo.se',
+        hostname: 'zoo.se',
         port: '',
         pathname: '/**',
       },

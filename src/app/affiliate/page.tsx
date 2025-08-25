@@ -36,7 +36,6 @@ const AffiliatePage = () => {
     "Active website, blog, or social media presence with pet-related content",
     "Minimum 1,000 followers or monthly website visitors",
     "Commitment to promoting only high-quality pet products",
-    "Compliance with FTC disclosure guidelines",
     "No promotion of competing pet stores"
   ]
 

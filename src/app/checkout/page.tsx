@@ -24,7 +24,17 @@ const checkoutSchema = yup.object({
   phone: yup.string().required('Phone number is required'),
 })
 
-type CheckoutFormData = yup.InferType<typeof checkoutSchema>
+// Define a form input type with required fields to match the validation schema
+type CheckoutFormData = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  phone: string;
+}
 
 export default function CheckoutPage() {
   const router = useRouter()

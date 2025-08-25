@@ -77,8 +77,8 @@ const Hero = () => {
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
             <div className="absolute inset-4 rounded-2xl overflow-hidden">
               <Image
-                src="https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                alt="Happy pets with premium food and toys"
+                src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/04/24144817/American-Staffordshire-Terrier-lying-outdoors-next-to-a-kitten-that-is-playing-with-the-dogs-nose.jpg"
+                alt="American Staffordshire Terrier lying outdoors next to a kitten playing with the dog's nose"
                 fill
                 className="object-cover"
                 priority

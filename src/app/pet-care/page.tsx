@@ -444,7 +444,7 @@ const PetCarePage = () => {
         <div className="card p-8 text-center bg-primary-green text-white">
           <Award className="w-16 h-16 mx-auto mb-4" />
           <h3 className="text-2xl font-bold mb-4">Need Personalized Advice?</h3>
-          <p className="mb-6">Our pet care experts are available to help with specific questions about your pet's needs.</p>
+          <p className="mb-6">Our pet care experts are available to help with specific questions about your pets needs.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="btn-secondary bg-white text-primary-green hover:bg-gray-100">
               Contact Our Experts

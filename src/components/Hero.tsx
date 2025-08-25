@@ -99,86 +99,38 @@ const Hero = () => {
       {/* Quick Category Cards */}
       <div className="max-w-7xl mx-auto px-4 -mb-16 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <Link href="/dogs" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
-                alt="Dog background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/dogs" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🐕</div>
               <h3 className="font-semibold text-sm">Dogs</h3>
             </div>
           </Link>
-          <Link href="/cats" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg"
-                alt="Cat background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/cats" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🐱</div>
               <h3 className="font-semibold text-sm">Cats</h3>
             </div>
           </Link>
-          <Link href="/birds" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/1406506/pexels-photo-1406506.jpeg"
-                alt="Bird background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/birds" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🐦</div>
               <h3 className="font-semibold text-sm">Birds</h3>
             </div>
           </Link>
-          <Link href="/fish" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg"
-                alt="Fish background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/fish" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🐠</div>
               <h3 className="font-semibold text-sm">Fish</h3>
             </div>
           </Link>
-          <Link href="/small-pets" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/372166/pexels-photo-372166.jpeg"
-                alt="Small pets background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/small-pets" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🐰</div>
               <h3 className="font-semibold text-sm">Small Pets</h3>
             </div>
           </Link>
-          <Link href="/reptiles" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer relative overflow-hidden">
-            <div className="absolute inset-0 opacity-20">
-              <Image
-                src="https://images.pexels.com/photos/80474/grass-snake-snake-serpentes-natrix-80474.jpeg"
-                alt="Reptile background"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="text-center relative z-10">
+          <Link href="/reptiles" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
               <div className="text-3xl mb-2">🦎</div>
               <h3 className="font-semibold text-sm">Reptiles</h3>
             </div>

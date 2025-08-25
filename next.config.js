@@ -12,6 +12,7 @@ const nextConfig = {
   images: {
     domains: [
       'images.unsplash.com',
+      'images.pexels.com',
       'get.musti.media',
       'media.zooplus.com',
       'm.media-amazon.com',
@@ -173,6 +174,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'www.teddytassen.se',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
         port: '',
         pathname: '/**',
       },

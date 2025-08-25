@@ -72,17 +72,36 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Images */}
           <div className="relative lg:h-[600px] h-[400px] animate-fade-in">
-            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
-            <div className="absolute inset-4 rounded-2xl overflow-hidden">
-              <Image
-                src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/04/24144817/American-Staffordshire-Terrier-lying-outdoors-next-to-a-kitten-that-is-playing-with-the-dogs-nose.jpg"
-                alt="American Staffordshire Terrier lying outdoors next to a kitten playing with the dog's nose"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="grid grid-cols-2 gap-4 h-full">
+              {/* New Contentful Image */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
+                <div className="absolute inset-4 rounded-2xl overflow-hidden">
+                  <Image
+                    src="https://images.ctfassets.net/rt5zmd3ipxai/17oDPufE2sOepM09RurKpS/f21b3b60b09b22415721aeb332bc6ae3/AdobeStock_84016419.jpeg?fit=fill&fm=webp&h=1156&w=2140&q=72"
+                    alt="Happy pets with premium food and toys"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
+              
+              {/* New AKC Image */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
+                <div className="absolute inset-4 rounded-2xl overflow-hidden">
+                  <Image
+                    src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/04/24144817/American-Staffordshire-Terrier-lying-outdoors-next-to-a-kitten-that-is-playing-with-the-dogs-nose.jpg"
+                    alt="American Staffordshire Terrier lying outdoors next to a kitten playing with the dog's nose"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
             
             {/* Floating elements */}

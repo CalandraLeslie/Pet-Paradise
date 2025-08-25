@@ -21,7 +21,7 @@ const Footer = () => {
       { name: 'Returns & Exchanges', href: '/returns' },
       { name: 'Size Guide', href: '/size-guide' },
       { name: 'FAQ', href: '/faq' },
-      { name: 'Pet Care Tips', href: '/care-tips' }
+      { name: 'Pet Care Tips', href: '/pet-care' }
     ],
     'Company': [
       { name: 'About Us', href: '/about' },

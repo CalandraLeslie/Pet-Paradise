@@ -1,5 +1,11 @@
 import { Eye, Ear, MousePointer, Keyboard, Heart, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Accessibility Statement | Pet Paradise',
+  description: 'Learn about Pet Paradise\'s commitment to digital accessibility and the features we provide to ensure an inclusive shopping experience for all users.',
+}
 
 const AccessibilityPage = () => {
   return (
@@ -7,13 +13,13 @@ const AccessibilityPage = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-primary-green to-primary-blue text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <nav className="flex items-center space-x-2 text-sm mb-4">
+          <nav className="flex items-center space-x-2 text-sm mb-4" aria-label="Breadcrumb">
             <Link href="/" className="text-white/80 hover:text-white">Home</Link>
-            <span className="text-white/60">/</span>
-            <span className="text-white">Accessibility</span>
+            <span className="text-white/60" aria-hidden="true">/</span>
+            <span className="text-white" aria-current="page">Accessibility</span>
           </nav>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <Heart className="inline w-12 h-12 mr-4" />
+            <Heart className="inline w-12 h-12 mr-4" aria-hidden="true" />
             Accessibility Statement
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
@@ -24,7 +30,7 @@ const AccessibilityPage = () => {
 
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Our Commitment */}
-        <div className="card p-8 mb-8">
+        <section className="card p-8 mb-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-4">Our Commitment to Accessibility</h2>
           <p className="text-ui-text-secondary mb-4">
             Pet Paradise is committed to ensuring digital accessibility for people with disabilities. We continually 
@@ -37,10 +43,10 @@ const AccessibilityPage = () => {
               information and services on our website.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* Standards */}
-        <div className="card p-8 mb-8">
+        <section className="card p-8 mb-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-6">Accessibility Standards</h2>
           <p className="text-ui-text-secondary mb-6">
             Our website aims to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. 
@@ -66,10 +72,10 @@ const AccessibilityPage = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Accessibility Features */}
-        <div className="card p-8 mb-8">
+        <section className="card p-8 mb-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-6">Accessibility Features</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
@@ -154,10 +160,10 @@ const AccessibilityPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Keyboard Shortcuts */}
-        <div className="card p-8 mb-8">
+        <section className="card p-8 mb-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-6">Keyboard Shortcuts</h2>
           <p className="text-ui-text-secondary mb-4">
             Use these keyboard shortcuts to navigate our website more efficiently:
@@ -182,10 +188,10 @@ const AccessibilityPage = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Testing and Feedback */}
-        <div className="card p-8 mb-8">
+        <section className="card p-8 mb-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-4">Testing and Continuous Improvement</h2>
           <p className="text-ui-text-secondary mb-4">
             We regularly test our website using various methods to ensure accessibility:
@@ -208,10 +214,10 @@ const AccessibilityPage = () => {
               <span>Regular accessibility audits by third-party experts</span>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Known Issues */}
-        <div className="card p-8 mb-8 bg-yellow-50 border-l-4 border-yellow-400">
+        <section className="card p-8 mb-8 bg-yellow-50 border-l-4 border-yellow-400">
           <h2 className="text-2xl font-bold text-yellow-800 mb-4">Known Accessibility Issues</h2>
           <p className="text-yellow-700 mb-4">
             We&apos;re aware of some accessibility issues and are working to resolve them:
@@ -224,10 +230,10 @@ const AccessibilityPage = () => {
           <p className="text-yellow-700 mt-4">
             <strong>Expected resolution:</strong> We aim to address these issues in our next major website update.
           </p>
-        </div>
+        </section>
 
         {/* Feedback and Contact */}
-        <div className="card p-8">
+        <section className="card p-8">
           <h2 className="text-2xl font-bold text-ui-text-primary mb-4">Accessibility Feedback</h2>
           <p className="text-ui-text-secondary mb-4">
             We welcome your feedback on the accessibility of Pet Paradise. If you encounter accessibility barriers 
@@ -243,7 +249,7 @@ const AccessibilityPage = () => {
             We aim to respond to accessibility feedback within 2 business days and will work with you to 
             resolve any issues as quickly as possible.
           </p>
-        </div>
+        </section>
       </div>
     </div>
   )

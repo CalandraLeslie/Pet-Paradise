@@ -17,7 +17,7 @@ const AccessibilityPage = () => {
             Accessibility Statement
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            We're committed to making Pet Paradise accessible to everyone, regardless of ability or technology.
+            We&apos;re committed to making Pet Paradise accessible to everyone, regardless of ability or technology.
           </p>
         </div>
       </div>
@@ -214,7 +214,7 @@ const AccessibilityPage = () => {
         <div className="card p-8 mb-8 bg-yellow-50 border-l-4 border-yellow-400">
           <h2 className="text-2xl font-bold text-yellow-800 mb-4">Known Accessibility Issues</h2>
           <p className="text-yellow-700 mb-4">
-            We're aware of some accessibility issues and are working to resolve them:
+            We&apos;re aware of some accessibility issues and are working to resolve them:
           </p>
           <ul className="text-yellow-700 space-y-2">
             <li>• Some third-party payment forms may have limited accessibility</li>

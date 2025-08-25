@@ -72,36 +72,17 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Images */}
+          {/* Hero Image */}
           <div className="relative lg:h-[600px] h-[400px] animate-fade-in">
-            <div className="grid grid-cols-2 gap-4 h-full">
-              {/* New Contentful Image */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
-                <div className="absolute inset-4 rounded-2xl overflow-hidden">
-                  <Image
-                    src="https://images.ctfassets.net/rt5zmd3ipxai/17oDPufE2sOepM09RurKpS/f21b3b60b09b22415721aeb332bc6ae3/AdobeStock_84016419.jpeg?fit=fill&fm=webp&h=1156&w=2140&q=72"
-                    alt="Happy pets with premium food and toys"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-              
-              {/* New AKC Image */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
-                <div className="absolute inset-4 rounded-2xl overflow-hidden">
-                  <Image
-                    src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/04/24144817/American-Staffordshire-Terrier-lying-outdoors-next-to-a-kitten-that-is-playing-with-the-dogs-nose.jpg"
-                    alt="American Staffordshire Terrier lying outdoors next to a kitten playing with the dog's nose"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
+            <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-3xl"></div>
+            <div className="absolute inset-4 rounded-2xl overflow-hidden">
+              <Image
+                src="https://images.ctfassets.net/rt5zmd3ipxai/17oDPufE2sOepM09RurKpS/f21b3b60b09b22415721aeb332bc6ae3/AdobeStock_84016419.jpeg?fit=fill&fm=webp&h=1156&w=2140&q=72"
+                alt="Happy pets with premium food and toys"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
             
             {/* Floating elements */}
@@ -152,6 +133,25 @@ const Hero = () => {
             <div className="text-center">
               <div className="text-3xl mb-2">🦎</div>
               <h3 className="font-semibold text-sm">Reptiles</h3>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <div className="flex flex-col items-center space-y-2">
+          <span className="text-sm">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default Hero
             </div>
           </Link>
         </div>

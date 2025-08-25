@@ -1,8 +1,14 @@
+'use client'
+
 import Image from 'next/image'
 import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useApp } from '@/context/AppContext'
 
 const DogsPage = () => {
+  const { addToCart } = useApp()
+  
   const dogProducts = [
     {
       id: 1,
@@ -12,7 +18,7 @@ const DogsPage = () => {
       originalPrice: 59.99,
       rating: 4.8,
       reviews: 324,
-      image: 'https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/b8/sams-field-salmon-potato-adult_41532-b8.jpg',
       badge: 'Best Seller',
       features: ['High Protein', 'Grain Free', 'Natural Ingredients'],
       category: 'Food'
@@ -25,7 +31,7 @@ const DogsPage = () => {
       originalPrice: null,
       rating: 4.6,
       reviews: 189,
-      image: 'https://images.pexels.com/photos/1390784/pexels-photo-1390784.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/86/nina-ottosson-treat-tumble-bla-105-cm-86.jpg',
       badge: 'New',
       features: ['Mental Stimulation', 'Durable', 'Easy Clean'],
       category: 'Toys'
@@ -38,7 +44,7 @@ const DogsPage = () => {
       originalPrice: 39.99,
       rating: 4.7,
       reviews: 156,
-      image: 'https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://zoolyx.se/cdn/shop/files/alac-dressyrhalsband-dressyrstryp-lader-helstryp-rundsytt-svart-wpp1591796056362.png?v=1746779848&width=1380',
       badge: 'Sale',
       features: ['Genuine Leather', 'Adjustable', 'Comfort Padding'],
       category: 'Accessories'
@@ -51,7 +57,7 @@ const DogsPage = () => {
       originalPrice: 109.99,
       rating: 4.9,
       reviews: 267,
-      image: 'https://images.pexels.com/photos/1850706/pexels-photo-1850706.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://media.zooplus.com/bilder/4/800/108332_pla_orthosofa_grau_fg_4820_4.jpg',
       badge: 'Premium',
       features: ['Memory Foam', 'Washable Cover', 'Joint Support'],
       category: 'Beds'
@@ -64,7 +70,7 @@ const DogsPage = () => {
       originalPrice: null,
       rating: 4.5,
       reviews: 98,
-      image: 'https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/5f/brit-care-functional-snack-dental-venison-150-g-5f.jpg',
       badge: 'Vet Approved',
       features: ['Natural Ingredients', 'Dental Health', 'No Artificial Colors'],
       category: 'Treats'
@@ -77,7 +83,7 @@ const DogsPage = () => {
       originalPrice: null,
       rating: 4.4,
       reviews: 142,
-      image: 'https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/36/basic-sweet-koppel-36.jpg',
       badge: 'Durable',
       features: ['Waterproof', 'Reflective Strip', '6ft Length'],
       category: 'Training'
@@ -86,12 +92,18 @@ const DogsPage = () => {
 
   const categories = [
     { name: 'All Products', count: dogProducts.length, active: true },
-    { name: 'Food', count: 1, active: false },
-    { name: 'Toys', count: 1, active: false },
-    { name: 'Accessories', count: 1, active: false },
-    { name: 'Beds', count: 1, active: false },
-    { name: 'Treats', count: 1, active: false },
-    { name: 'Training', count: 1, active: false }
+    { name: 'Food & Nutrition', count: 1, active: false },
+    { name: 'Toys & Entertainment', count: 1, active: false },
+    { name: 'Training & Behavior', count: 1, active: false },
+    { name: 'Grooming & Care', count: 1, active: false },
+    { name: 'Beds & Comfort', count: 1, active: false },
+    { name: 'Collars & Leashes', count: 1, active: false },
+    { name: 'Travel & Transport', count: 1, active: false },
+    { name: 'Health & Supplements', count: 1, active: false },
+    { name: 'Bowls & Feeding', count: 1, active: false },
+    { name: 'Outdoor & Exercise', count: 1, active: false },
+    { name: 'Puppy Supplies', count: 1, active: false },
+    { name: 'Senior Dog Care', count: 1, active: false }
   ]
 
   return (
@@ -284,7 +296,17 @@ const DogsPage = () => {
                           </span>
                         )}
                       </div>
-                      <button className="bg-pet-dog text-white py-2 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center space-x-2">
+                      <button 
+                        onClick={() => addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: 'Dogs',
+                          brand: product.brand
+                        })}
+                        className="bg-pet-dog text-white py-2 px-4 rounded-lg hover:bg-amber-700 transition-colors flex items-center space-x-2"
+                      >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
                       </button>

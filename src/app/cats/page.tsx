@@ -1,96 +1,109 @@
+'use client'
+
 import Image from 'next/image'
 import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useApp } from '@/context/AppContext'
 
 const CatsPage = () => {
+  const { addToCart } = useApp()
+  
   const catProducts = [
     {
       id: 1,
-      name: 'Premium Indoor Cat Food',
+      name: 'Premium Chicken & Rice Cat Food',
       brand: 'FelineNutrition',
       price: 39.99,
-      originalPrice: 44.99,
+      originalPrice: 49.99,
       rating: 4.7,
-      reviews: 289,
-      image: 'https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=500',
+      reviews: 298,
+      image: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=500&h=500&fit=crop',
       badge: 'Best Seller',
-      features: ['Indoor Formula', 'Hairball Control', 'Natural Ingredients'],
+      features: ['High Protein', 'Indoor Formula', 'Hairball Control'],
       category: 'Food'
     },
     {
       id: 2,
-      name: 'Interactive Puzzle Feeder',
-      brand: 'SmartCat',
-      price: 29.99,
+      name: 'Interactive Feather Wand Toy',
+      brand: 'PlayfulPaws',
+      price: 18.99,
       originalPrice: null,
-      rating: 4.6,
-      reviews: 156,
-      image: 'https://images.pexels.com/photos/1571076/pexels-photo-1571076.jpeg?auto=compress&cs=tinysrgb&w=500',
+      rating: 4.8,
+      reviews: 167,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/d0/littlebigger-pure-purr-kattvippa-med-fem-leksaker-d0.jpg',
       badge: 'New',
-      features: ['Mental Stimulation', 'Slow Feeding', 'Easy Clean'],
+      features: ['Interactive Play', 'Natural Feathers', 'Exercise'],
       category: 'Toys'
     },
     {
       id: 3,
-      name: 'Self-Cleaning Litter Box',
-      brand: 'AutoClean',
-      price: 199.99,
-      originalPrice: 249.99,
-      rating: 4.8,
-      reviews: 78,
-      image: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Premium',
-      features: ['Automatic Cleaning', 'Odor Control', 'App Connected'],
+      name: 'Clumping Clay Cat Litter',
+      brand: 'CleanPaws',
+      price: 22.99,
+      originalPrice: 27.99,
+      rating: 4.6,
+      reviews: 421,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/e6/compact-care-multicat-unscented-14-kg-e6.jpg',
+      badge: 'Sale',
+      features: ['Odor Control', 'Easy Scooping', 'Dust Free'],
       category: 'Litter'
     },
     {
       id: 4,
-      name: 'Multi-Level Cat Tree',
-      brand: 'ClimbMax',
-      price: 149.99,
-      originalPrice: 179.99,
-      rating: 4.5,
-      reviews: 234,
-      image: 'https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Sale',
-      features: ['5 Levels', 'Scratching Posts', 'Cozy Hideouts'],
+      name: 'Tall Scratching Post Tower',
+      brand: 'ScratchMaster',
+      price: 79.99,
+      originalPrice: 99.99,
+      rating: 4.9,
+      reviews: 189,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/de/little-bigger-raapimapuut-littlebigger_raapimapuu_pylon_027625-de.jpg',
+      badge: 'Premium',
+      features: ['Sisal Rope', 'Multi Level', 'Stable Base'],
       category: 'Furniture'
     },
     {
       id: 5,
-      name: 'Catnip Organic Treats',
-      brand: 'NaturalMeow',
-      price: 12.99,
+      name: 'Freeze-Dried Salmon Treats',
+      brand: 'TastyBites',
+      price: 16.99,
       originalPrice: null,
-      rating: 4.9,
-      reviews: 167,
-      image: 'https://images.pexels.com/photos/7720706/pexels-photo-7720706.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Organic',
-      features: ['100% Organic', 'Premium Catnip', 'Resealable Bag'],
+      rating: 4.5,
+      reviews: 134,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/ce/brit-care-cat-snack-superfruits-salmon-100g-100-grams-ce.jpg',
+      badge: 'Natural',
+      features: ['Pure Salmon', 'No Additives', 'High Protein'],
       category: 'Treats'
     },
     {
       id: 6,
-      name: 'Feather Wand Toy Set',
-      brand: 'PlayTime',
-      price: 18.99,
+      name: 'Adjustable Safety Collar',
+      brand: 'SafePaws',
+      price: 12.99,
       originalPrice: null,
       rating: 4.4,
-      reviews: 203,
-      image: 'https://images.pexels.com/photos/7720707/pexels-photo-7720707.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Popular',
-      features: ['Interactive Play', 'Natural Feathers', 'Replaceable Tips'],
-      category: 'Toys'
+      reviews: 87,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/6b/feel-active-padded-collar-black-6b.jpg',
+      badge: 'Safety',
+      features: ['Breakaway Design', 'Reflective', 'Bell Included'],
+      category: 'Accessories'
     }
   ]
 
   const categories = [
     { name: 'All Products', count: catProducts.length, active: true },
-    { name: 'Food', count: 1, active: false },
-    { name: 'Toys', count: 2, active: false },
-    { name: 'Litter', count: 1, active: false },
-    { name: 'Furniture', count: 1, active: false },
-    { name: 'Treats', count: 1, active: false }
+    { name: 'Food & Nutrition', count: 1, active: false },
+    { name: 'Litter & Hygiene', count: 1, active: false },
+    { name: 'Toys & Play', count: 1, active: false },
+    { name: 'Scratching & Furniture', count: 1, active: false },
+    { name: 'Grooming & Care', count: 1, active: false },
+    { name: 'Beds & Comfort', count: 1, active: false },
+    { name: 'Bowls & Feeding', count: 1, active: false },
+    { name: 'Collars & Accessories', count: 1, active: false },
+    { name: 'Health & Supplements', count: 1, active: false },
+    { name: 'Kitten Supplies', count: 1, active: false },
+    { name: 'Travel & Transport', count: 1, active: false },
+    { name: 'Outdoor & Safety', count: 1, active: false }
   ]
 
   return (
@@ -109,7 +122,7 @@ const CatsPage = () => {
                 🐱 Cat Supplies
               </h1>
               <p className="text-xl text-white/90 max-w-2xl">
-                Independent spirits deserve the finest - premium nutrition, engaging entertainment, and luxurious comfort.
+                Everything your independent feline friend needs - from premium nutrition to engaging toys and cozy furniture.
               </p>
             </div>
             <div className="hidden lg:block text-6xl opacity-20">
@@ -148,27 +161,27 @@ const CatsPage = () => {
                 ))}
               </div>
 
-              {/* Age Filter */}
+              {/* Price Filter */}
               <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Age Group</h4>
+                <h4 className="font-semibold text-ui-text-primary mb-4">Price Range</h4>
                 <div className="space-y-2">
-                  {['Kitten', 'Adult', 'Senior', 'All Ages'].map((age) => (
-                    <label key={age} className="flex items-center">
+                  {['Under $20', '$20 - $40', '$40 - $80', 'Over $80'].map((range) => (
+                    <label key={range} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{age}</span>
+                      <span className="text-sm text-ui-text-secondary">{range}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* Special Features */}
+              {/* Brand Filter */}
               <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Special Features</h4>
+                <h4 className="font-semibold text-ui-text-primary mb-4">Brand</h4>
                 <div className="space-y-2">
-                  {['Grain Free', 'Hairball Control', 'Indoor Formula', 'Organic'].map((feature) => (
-                    <label key={feature} className="flex items-center">
+                  {['FelineNutrition', 'PlayfulPaws', 'CleanPaws', 'ScratchMaster'].map((brand) => (
+                    <label key={brand} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{feature}</span>
+                      <span className="text-sm text-ui-text-secondary">{brand}</span>
                     </label>
                   ))}
                 </div>
@@ -185,7 +198,7 @@ const CatsPage = () => {
                   {catProducts.length} Products Found
                 </h2>
                 <p className="text-sm text-ui-text-secondary">
-                  Everything for your feline friend
+                  Premium cat supplies for every need
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -283,7 +296,17 @@ const CatsPage = () => {
                           </span>
                         )}
                       </div>
-                      <button className="bg-pet-cat text-white py-2 px-4 rounded-lg hover:bg-slate-700 transition-colors flex items-center space-x-2">
+                      <button 
+                        onClick={() => addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: 'Cats',
+                          brand: product.brand
+                        })}
+                        className="bg-pet-cat text-white py-2 px-4 rounded-lg hover:bg-slate-700 transition-colors flex items-center space-x-2"
+                      >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
                       </button>

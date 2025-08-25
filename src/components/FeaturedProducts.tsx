@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-dog',
       badge: 'Best Seller',
       badgeColor: 'bg-primary-orange',
-      image: 'https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/6d/canagan-scottish-salmon-6d.jpg',
       features: ['High Protein', 'Grain Free', 'Natural Ingredients']
     },
     {
@@ -37,7 +37,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-cat',
       badge: 'New',
       badgeColor: 'bg-primary-green',
-      image: 'https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/07/catit-senses-20-digger-07.jpg',
       features: ['Mental Stimulation', 'Slow Feeding', 'Easy Clean']
     },
     {
@@ -52,7 +52,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-bird',
       badge: 'Sale',
       badgeColor: 'bg-status-error',
-      image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://images.oda.com/prod/local_products/58cdcbf2-a320-425e-a710-c752c4bc05f6.jpg?fit=bounds&format=auto&optimize=medium&width=604&s=0x14f22acc6a1090e4c7459dcc6f838eaf9c877c48',
       features: ['Vitamin Enriched', 'All Natural', '5lb Bag']
     },
     {
@@ -67,7 +67,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-fish',
       badge: 'Premium',
       badgeColor: 'bg-primary-blue',
-      image: 'https://images.pexels.com/photos/1166643/pexels-photo-1166643.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://m.media-amazon.com/images/I/71mcQryH1fL._AC_SX466_.jpg',
       features: ['Full Spectrum', 'Remote Control', 'Energy Efficient']
     },
     {
@@ -82,7 +82,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-rabbit',
       badge: 'Featured',
       badgeColor: 'bg-purple-600',
-      image: 'https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://www.teddytassen.se/webbshop/kanin/kaninburar--kaninhus/utomhus/large/rabbit-royal-kaninfort-med-isolerad-bodel-119cm-15621.jpg',
       features: ['Weather Resistant', 'Easy Assembly', 'Multi-Level']
     },
     {
@@ -97,7 +97,7 @@ const FeaturedProducts = () => {
       categoryColor: 'text-pet-reptile',
       badge: 'Essential',
       badgeColor: 'bg-green-600',
-      image: 'https://images.pexels.com/photos/7720705/pexels-photo-7720705.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://m.media-amazon.com/images/I/61eAanBpY-S._AC_SY445_SX342_QL70_ML2_.jpg',
       features: ['UVB/UVA', 'Adjustable', 'Safe Design']
     }
   ]

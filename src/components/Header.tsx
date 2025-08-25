@@ -7,6 +7,7 @@ import AuthModal from './AuthModal'
 import CartSidebar from './CartSidebar'
 import Link from 'next/link'
 import { useApp } from '@/context/AppContext'
+import { usePathname } from 'next/navigation'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,6 +15,7 @@ const Header = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
   const [isCartOpen, setIsCartOpen] = useState(false)
   const { cartCount, isAuthenticated, user, logout } = useApp()
+  const pathname = usePathname()
 
   const categories = [
     { name: 'Dogs', color: 'text-pet-dog', href: '/dogs' },
@@ -145,19 +147,33 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4">
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center justify-center space-x-8 py-4">
+            <Link
+              href="/"
+              className={`font-medium transition-colors ${
+                pathname === '/' 
+                  ? 'text-primary-blue border-b-2 border-primary-blue' 
+                  : 'text-ui-text-secondary hover:text-primary-blue'
+              }`}
+            >
+              Home
+            </Link>
             {categories.map((category) => (
               <Link
                 key={category.name}
                 href={category.href}
-                className={`font-medium hover:${category.color} transition-colors ${category.color}`}
+                className={`font-medium transition-colors ${
+                  pathname === category.href 
+                    ? `${category.color} border-b-2 border-ui-text-primary` 
+                    : 'text-ui-text-secondary hover:${category.color}'
+                }`}
               >
                 {category.name}
               </Link>
             ))}
-            <Link href="/sale" className="font-medium text-ui-text-secondary hover:text-primary-blue transition-colors">
+            <Link href="/sale" className={`font-medium transition-colors ${pathname === '/sale' ? 'text-red-500 border-b-2 border-red-500' : 'text-red-500 hover:text-red-600'}`}>
               Sale
             </Link>
-            <Link href="/new-arrivals" className="font-medium text-ui-text-secondary hover:text-primary-blue transition-colors">
+            <Link href="/new-arrivals" className={`font-medium transition-colors ${pathname === '/new-arrivals' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-orange-500 hover:text-orange-600'}`}>
               New Arrivals
             </Link>
           </div>
@@ -165,6 +181,17 @@ const Header = () => {
           {/* Mobile navigation */}
           {isMenuOpen && (
             <div className="md:hidden py-4 space-y-4 animate-slide-up">
+              <Link
+                href="/"
+                className={`block py-3 px-4 rounded-lg font-medium transition-colors ${
+                  pathname === '/' 
+                    ? 'bg-primary-blue text-white' 
+                    : 'text-ui-text-secondary hover:bg-ui-muted'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
               {categories.map((category) => (
                 <Link
                   key={category.name}

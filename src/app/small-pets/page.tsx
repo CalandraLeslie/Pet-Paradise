@@ -1,8 +1,14 @@
+'use client'
+
 import Image from 'next/image'
 import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useApp } from '@/context/AppContext'
 
 const SmallPetsPage = () => {
+  const { addToCart } = useApp()
+  
   const smallPetProducts = [
     {
       id: 1,
@@ -12,7 +18,7 @@ const SmallPetsPage = () => {
       originalPrice: 26.99,
       rating: 4.8,
       reviews: 156,
-      image: 'https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/96/brit-animals-kanin-complete_41051-96.jpg',
       badge: 'Best Seller',
       features: ['High Fiber', 'Timothy Hay', 'Vitamin C'],
       category: 'Food'
@@ -25,7 +31,7 @@ const SmallPetsPage = () => {
       originalPrice: 179.99,
       rating: 4.6,
       reviews: 89,
-      image: 'https://images.pexels.com/photos/8473899/pexels-photo-8473899.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://media.zooplus.com/bilder/5/400/55571_pla_ferplast_cottage_5.jpg',
       badge: 'Premium',
       features: ['Weather Resistant', 'Multi-Level', 'Easy Assembly'],
       category: 'Housing'
@@ -38,7 +44,7 @@ const SmallPetsPage = () => {
       originalPrice: null,
       rating: 4.7,
       reviews: 203,
-      image: 'https://images.pexels.com/photos/7210730/pexels-photo-7210730.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/2c/zolux-nlife-microfiber-matta-for-smadjur-2c.jpg',
       badge: 'Washable',
       features: ['Absorbent', 'Washable', 'Odor Control'],
       category: 'Bedding'
@@ -51,7 +57,7 @@ const SmallPetsPage = () => {
       originalPrice: null,
       rating: 4.5,
       reviews: 287,
-      image: 'https://images.pexels.com/photos/7210728/pexels-photo-7210728.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://images.zoo.se/1a4e7c6c-57f4-4a52-8d85-87a3b353c03c?auto=format&q=80&f=webp&w=1050',
       badge: 'Silent',
       features: ['Silent Operation', 'Safe Design', 'Easy Installation'],
       category: 'Exercise'
@@ -64,7 +70,7 @@ const SmallPetsPage = () => {
       originalPrice: null,
       rating: 4.9,
       reviews: 178,
-      image: 'https://images.pexels.com/photos/8473897/pexels-photo-8473897.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://m.media-amazon.com/images/I/71Yek0rE9QL._AC_SX679_.jpg',
       badge: 'Natural',
       features: ['Apple Wood', 'Dental Health', 'Variety Pack'],
       category: 'Toys'
@@ -77,7 +83,7 @@ const SmallPetsPage = () => {
       originalPrice: 39.99,
       rating: 4.4,
       reviews: 124,
-      image: 'https://images.pexels.com/photos/7210732/pexels-photo-7210732.jpeg?auto=compress&cs=tinysrgb&w=500',
+      image: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR-P9tyXQEmTgMCkBA-MVNhe-cJohYOIuXN6nm3q88H_Ih7SWq1OxMHOKDYk02SlUbd5Rw_MxF8XwUulUGiOZ19MnViOv09Bo_v8fzaGqqATW4OhJM-KNwY',
       badge: 'Portable',
       features: ['Well Ventilated', 'Secure Locks', 'Comfortable'],
       category: 'Carriers'
@@ -86,12 +92,17 @@ const SmallPetsPage = () => {
 
   const categories = [
     { name: 'All Products', count: smallPetProducts.length, active: true },
-    { name: 'Food', count: 1, active: false },
-    { name: 'Housing', count: 1, active: false },
-    { name: 'Bedding', count: 1, active: false },
-    { name: 'Exercise', count: 1, active: false },
-    { name: 'Toys', count: 1, active: false },
-    { name: 'Carriers', count: 1, active: false }
+    { name: 'Food & Nutrition', count: 1, active: false },
+    { name: 'Cages & Housing', count: 1, active: false },
+    { name: 'Bedding & Litter', count: 1, active: false },
+    { name: 'Toys & Enrichment', count: 1, active: false },
+    { name: 'Exercise & Activity', count: 1, active: false },
+    { name: 'Grooming & Care', count: 1, active: false },
+    { name: 'Health & Supplements', count: 1, active: false },
+    { name: 'Travel & Transport', count: 1, active: false },
+    { name: 'Feeding Accessories', count: 1, active: false },
+    { name: 'Cleaning & Maintenance', count: 1, active: false },
+    { name: 'Hideouts & Shelters', count: 1, active: false }
   ]
 
   return (
@@ -297,7 +308,17 @@ const SmallPetsPage = () => {
                           </span>
                         )}
                       </div>
-                      <button className="bg-pet-rabbit text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors flex items-center space-x-2">
+                      <button 
+                        onClick={() => addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: 'Small Pets',
+                          brand: product.brand
+                        })}
+                        className="bg-pet-rabbit text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors flex items-center space-x-2"
+                      >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
                       </button>

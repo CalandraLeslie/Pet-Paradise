@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 const FeaturedCategories = () => {
   const categories = [
@@ -14,7 +15,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-dog',
       bgColor: 'bg-amber-50',
       image: 'https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🐕'
+      icon: '🐕',
+      href: '/dogs'
     },
     {
       id: 2,
@@ -25,7 +27,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-cat',
       bgColor: 'bg-slate-50',
       image: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🐱'
+      icon: '🐱',
+      href: '/cats'
     },
     {
       id: 3,
@@ -36,7 +39,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-bird',
       bgColor: 'bg-yellow-50',
       image: 'https://images.pexels.com/photos/349758/hummingbird-bird-birds-349758.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🐦'
+      icon: '🐦',
+      href: '/birds'
     },
     {
       id: 4,
@@ -47,7 +51,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-fish',
       bgColor: 'bg-cyan-50',
       image: 'https://images.pexels.com/photos/1166644/pexels-photo-1166644.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🐠'
+      icon: '🐠',
+      href: '/fish'
     },
     {
       id: 5,
@@ -58,7 +63,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-rabbit',
       bgColor: 'bg-purple-50',
       image: 'https://images.pexels.com/photos/4588065/pexels-photo-4588065.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🐰'
+      icon: '🐰',
+      href: '/small-pets'
     },
     {
       id: 6,
@@ -69,7 +75,8 @@ const FeaturedCategories = () => {
       textColor: 'text-pet-reptile',
       bgColor: 'bg-green-50',
       image: 'https://images.pexels.com/photos/7720705/pexels-photo-7720705.jpeg?auto=compress&cs=tinysrgb&w=500',
-      icon: '🦎'
+      icon: '🦎',
+      href: '/reptiles'
     }
   ]
 
@@ -89,8 +96,9 @@ const FeaturedCategories = () => {
         {/* Categories grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <div
+            <Link
               key={category.id}
+              href={category.href}
               className="group card p-0 hover:scale-105 cursor-pointer overflow-hidden"
             >
               {/* Image section */}
@@ -133,7 +141,7 @@ const FeaturedCategories = () => {
                   <span className="text-xs bg-white/70 rounded-full px-3 py-1 text-gray-700">Accessories</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

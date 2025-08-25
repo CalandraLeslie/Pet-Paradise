@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { ArrowRight, Star } from 'lucide-react'
+import Link from 'next/link'
 
 const Hero = () => {
   return (
@@ -92,6 +93,48 @@ const Hero = () => {
               <span className="text-2xl">💖</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Quick Category Cards */}
+      <div className="max-w-7xl mx-auto px-4 -mb-16 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <Link href="/dogs" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🐕</div>
+              <h3 className="font-semibold text-sm">Dogs</h3>
+            </div>
+          </Link>
+          <Link href="/cats" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🐱</div>
+              <h3 className="font-semibold text-sm">Cats</h3>
+            </div>
+          </Link>
+          <Link href="/birds" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🐦</div>
+              <h3 className="font-semibold text-sm">Birds</h3>
+            </div>
+          </Link>
+          <Link href="/fish" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🐠</div>
+              <h3 className="font-semibold text-sm">Fish</h3>
+            </div>
+          </Link>
+          <Link href="/small-pets" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🐰</div>
+              <h3 className="font-semibold text-sm">Small Pets</h3>
+            </div>
+          </Link>
+          <Link href="/reptiles" className="group bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-all cursor-pointer">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🦎</div>
+              <h3 className="font-semibold text-sm">Reptiles</h3>
+            </div>
+          </Link>
         </div>
       </div>
 

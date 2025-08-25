@@ -1,97 +1,114 @@
+'use client'
+
 import Image from 'next/image'
 import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useApp } from '@/context/AppContext'
 
 const BirdsPage = () => {
+  const { addToCart } = useApp()
+  const [activeCategory, setActiveCategory] = useState('All Products')
+  
   const birdProducts = [
     {
       id: 1,
       name: 'Premium Seed Mix for Parrots',
-      brand: 'FeatherFresh',
-      price: 24.99,
-      originalPrice: 29.99,
+      brand: 'AvianNutrition',
+      price: 32.99,
+      originalPrice: 39.99,
       rating: 4.8,
-      reviews: 142,
-      image: 'https://images.pexels.com/photos/7210734/pexels-photo-7210734.jpeg?auto=compress&cs=tinysrgb&w=500',
+      reviews: 156,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/8d/versele-laga-prestige-loro-parque-amazon-parrot-mix-1kg-8d.jpg',
       badge: 'Best Seller',
-      features: ['Vitamin Enriched', 'Natural Seeds', 'No Fillers'],
+      features: ['Sunflower Seeds', 'Nuts & Fruits', 'Vitamin Enriched'],
       category: 'Food'
     },
     {
       id: 2,
       name: 'Large Flight Cage',
-      brand: 'AviaryMax',
+      brand: 'BirdHomes',
       price: 189.99,
-      originalPrice: 219.99,
-      rating: 4.6,
+      originalPrice: 229.99,
+      rating: 4.7,
       reviews: 89,
-      image: 'https://images.pexels.com/photos/7210734/pexels-photo-7210734.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Premium',
-      features: ['Spacious Design', 'Easy Assembly', 'Multiple Perches'],
+      image: 'https://m.media-amazon.com/images/I/7192poH7vqL._AC_SX679_.jpg',
+      badge: 'Sale',
+      features: ['Spacious Design', 'Easy Clean', 'Multiple Perches'],
       category: 'Cages'
     },
     {
       id: 3,
       name: 'Natural Wood Perch Set',
-      brand: 'BranchCraft',
-      price: 34.99,
+      brand: 'NaturePerch',
+      price: 24.99,
       originalPrice: null,
-      rating: 4.7,
-      reviews: 156,
-      image: 'https://images.pexels.com/photos/4033325/pexels-photo-4033325.jpeg?auto=compress&cs=tinysrgb&w=500',
+      rating: 4.6,
+      reviews: 234,
+      image: 'https://media.zooplus.com/bilder/4/400/49948_PLA_Trixie_sandgestrahlte_Weinreben_4.jpg',
       badge: 'Natural',
-      features: ['Real Wood', 'Varied Diameters', 'Easy Installation'],
+      features: ['Apple Wood', 'Various Sizes', 'Foot Health'],
       category: 'Perches'
     },
     {
       id: 4,
-      name: 'Interactive Foraging Toy',
-      brand: 'SmartBird',
-      price: 19.99,
+      name: 'Interactive Puzzle Toy',
+      brand: 'BirdBrain',
+      price: 29.99,
       originalPrice: null,
-      rating: 4.5,
-      reviews: 98,
-      image: 'https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=500',
+      rating: 4.9,
+      reviews: 67,
+      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/9a/fagellekpark-9a.jpg',
       badge: 'New',
-      features: ['Mental Stimulation', 'Food Dispenser', 'Colorful Design'],
+      features: ['Mental Stimulation', 'Foraging Fun', 'Durable'],
       category: 'Toys'
     },
     {
       id: 5,
-      name: 'Mineral Block Supplement',
-      brand: 'VitalBird',
+      name: 'Cuttlebone & Mineral Block',
+      brand: 'HealthyBeak',
       price: 8.99,
       originalPrice: null,
-      rating: 4.9,
-      reviews: 203,
-      image: 'https://images.pexels.com/photos/5998930/pexels-photo-5998930.jpeg?auto=compress&cs=tinysrgb&w=500',
+      rating: 4.5,
+      reviews: 198,
+      image: 'https://images.zoo.se/5cf4c49e-33f5-495e-bbb4-a012da5307c1?auto=format&q=80&f=webp&w=1050',
       badge: 'Essential',
-      features: ['Calcium Rich', 'Natural Minerals', 'Beak Health'],
-      category: 'Supplements'
+      features: ['Calcium Source', 'Beak Health', 'Natural'],
+      category: 'Health'
     },
     {
       id: 6,
-      name: 'Travel Carrier',
-      brand: 'SafeFlight',
-      price: 45.99,
-      originalPrice: 52.99,
+      name: 'Stainless Steel Food Bowls',
+      brand: 'CleanFeeding',
+      price: 19.99,
+      originalPrice: 24.99,
       rating: 4.4,
-      reviews: 67,
-      image: 'https://images.pexels.com/photos/7210705/pexels-photo-7210705.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Travel',
-      features: ['Airline Approved', 'Ventilated', 'Secure Latches'],
-      category: 'Carriers'
+      reviews: 123,
+      image: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQnhK8DGkYZLP2PTH86P45qdNZY1pB1iBrz2JF5JEG-aPc1qPA_FIMt5XwkCcQTpVEKHhG1LqgxHS2DECN7BmmbOtKIzBOTVVDkiWY2tJqUNG0L04zdw2Sr',
+      badge: 'Hygienic',
+      features: ['Easy Clean', 'Rust Resistant', 'Dishwasher Safe'],
+      category: 'Accessories'
     }
   ]
 
+  // Filter products based on active category
+  const filteredProducts = activeCategory === 'All Products' 
+    ? birdProducts 
+    : birdProducts.filter(product => product.category === activeCategory)
+
   const categories = [
-    { name: 'All Products', count: birdProducts.length, active: true },
-    { name: 'Food', count: 1, active: false },
-    { name: 'Cages', count: 1, active: false },
-    { name: 'Perches', count: 1, active: false },
-    { name: 'Toys', count: 1, active: false },
-    { name: 'Supplements', count: 1, active: false },
-    { name: 'Carriers', count: 1, active: false }
+    { name: 'All Products', count: birdProducts.length },
+    { name: 'Food & Seeds', count: birdProducts.filter(p => p.category === 'Food').length },
+    { name: 'Cages & Aviaries', count: birdProducts.filter(p => p.category === 'Cages').length },
+    { name: 'Perches & Stands', count: birdProducts.filter(p => p.category === 'Perches').length },
+    { name: 'Toys & Enrichment', count: birdProducts.filter(p => p.category === 'Toys').length },
+    { name: 'Health & Supplements', count: birdProducts.filter(p => p.category === 'Health').length },
+    { name: 'Feeding Accessories', count: birdProducts.filter(p => p.category === 'Accessories').length },
+    { name: 'Nesting & Breeding', count: 0 },
+    { name: 'Grooming & Care', count: 0 },
+    { name: 'Travel & Transport', count: 0 },
+    { name: 'Cleaning & Maintenance', count: 0 },
+    { name: 'Training & Behavior', count: 0 }
   ]
 
   return (
@@ -110,7 +127,7 @@ const BirdsPage = () => {
                 🐦 Bird Supplies
               </h1>
               <p className="text-xl text-white/90 max-w-2xl">
-                Colorful companions deserve vibrant care - premium seeds, spacious homes, and enriching activities.
+                Everything your feathered friends need - from nutritious seeds to spacious cages and engaging toys.
               </p>
             </div>
             <div className="hidden lg:block text-6xl opacity-20">
@@ -133,15 +150,16 @@ const BirdsPage = () => {
                 {categories.map((category) => (
                   <button
                     key={category.name}
+                    onClick={() => setActiveCategory(category.name)}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center justify-between ${
-                      category.active
+                      activeCategory === category.name
                         ? 'bg-pet-bird text-white'
                         : 'text-ui-text-secondary hover:bg-ui-muted'
                     }`}
                   >
                     <span>{category.name}</span>
                     <span className={`text-xs px-2 py-1 rounded-full ${
-                      category.active ? 'bg-white/20' : 'bg-ui-muted'
+                      activeCategory === category.name ? 'bg-white/20' : 'bg-ui-muted'
                     }`}>
                       {category.count}
                     </span>
@@ -149,27 +167,27 @@ const BirdsPage = () => {
                 ))}
               </div>
 
-              {/* Bird Type Filter */}
+              {/* Price Filter */}
               <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Bird Type</h4>
+                <h4 className="font-semibold text-ui-text-primary mb-4">Price Range</h4>
                 <div className="space-y-2">
-                  {['Parrots', 'Canaries', 'Finches', 'Cockatiels', 'Budgies'].map((type) => (
-                    <label key={type} className="flex items-center">
+                  {['Under $15', '$15 - $30', '$30 - $100', 'Over $100'].map((range) => (
+                    <label key={range} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{type}</span>
+                      <span className="text-sm text-ui-text-secondary">{range}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
-              {/* Cage Size Filter */}
+              {/* Brand Filter */}
               <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Cage Size</h4>
+                <h4 className="font-semibold text-ui-text-primary mb-4">Brand</h4>
                 <div className="space-y-2">
-                  {['Small (18")', 'Medium (24")', 'Large (36")', 'Extra Large (48"+)'].map((size) => (
-                    <label key={size} className="flex items-center">
+                  {['AvianNutrition', 'BirdHomes', 'NaturePerch', 'BirdBrain'].map((brand) => (
+                    <label key={brand} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{size}</span>
+                      <span className="text-sm text-ui-text-secondary">{brand}</span>
                     </label>
                   ))}
                 </div>
@@ -177,16 +195,16 @@ const BirdsPage = () => {
             </div>
           </div>
 
-          {/* Main Content */}
+          {/* Main Content - Same structure as dogs page but with bird-specific styling */}
           <div className="lg:col-span-3">
-            {/* Filters and Sort */}
+            {/* Products Grid - Same as dogs but with pet-bird color scheme */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
               <div>
                 <h2 className="text-xl font-semibold text-ui-text-primary">
-                  {birdProducts.length} Products Found
+                  {filteredProducts.length} Products Found
                 </h2>
                 <p className="text-sm text-ui-text-secondary">
-                  Everything for your feathered friends
+                  {activeCategory === 'All Products' ? 'Premium bird supplies for every species' : `${activeCategory} products`}
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -208,11 +226,9 @@ const BirdsPage = () => {
               </div>
             </div>
 
-            {/* Products Grid */}
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {birdProducts.map((product) => (
+              {filteredProducts.map((product) => (
                 <div key={product.id} className="card p-0 hover:scale-105 cursor-pointer overflow-hidden group">
-                  {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={product.image}
@@ -235,7 +251,6 @@ const BirdsPage = () => {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-ui-text-muted font-medium">{product.brand}</span>
@@ -284,7 +299,17 @@ const BirdsPage = () => {
                           </span>
                         )}
                       </div>
-                      <button className="bg-pet-bird text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors flex items-center space-x-2">
+                      <button 
+                        onClick={() => addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: 'Birds',
+                          brand: product.brand
+                        })}
+                        className="bg-pet-bird text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors flex items-center space-x-2"
+                      >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
                       </button>
@@ -294,7 +319,6 @@ const BirdsPage = () => {
               ))}
             </div>
 
-            {/* Load More */}
             <div className="text-center mt-12">
               <button className="btn-secondary">
                 Load More Products

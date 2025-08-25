@@ -1,103 +1,120 @@
+'use client'
+
 import Image from 'next/image'
 import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useApp } from '@/context/AppContext'
 
 const ReptilesPage = () => {
+  const { addToCart } = useApp()
+  const [activeCategory, setActiveCategory] = useState('All Products')
+  
   const reptileProducts = [
     {
       id: 1,
       name: 'Reptile Heat Lamp Kit',
-      brand: 'ThermalCare',
-      price: 39.99,
-      originalPrice: 44.99,
-      rating: 4.6,
-      reviews: 112,
-      image: 'https://images.pexels.com/photos/6324998/pexels-photo-6324998.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Essential',
-      features: ['UVB/UVA', 'Adjustable', 'Safe Design'],
+      brand: 'ThermoReptile',
+      price: 45.99,
+      originalPrice: 54.99,
+      rating: 4.8,
+      reviews: 156,
+      image: 'https://ledmegastore.se/210966-large_defaultWH/reptil-varmelampe-uva-uvb-50w-klipsholder.jpg',
+      badge: 'Best Seller',
+      features: ['UVB/UVA', 'Temperature Control', 'Timer Function'],
       category: 'Heating'
     },
     {
       id: 2,
-      name: '40 Gallon Terrarium',
-      brand: 'ReptileHomes',
+      name: '40 Gallon Glass Terrarium',
+      brand: 'ReptiHome',
       price: 199.99,
       originalPrice: 229.99,
-      rating: 4.8,
-      reviews: 78,
-      image: 'https://images.pexels.com/photos/6790900/pexels-photo-6790900.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Complete Setup',
-      features: ['Front Opening', 'Screen Top', 'Drainage System'],
+      rating: 4.7,
+      reviews: 89,
+      image: 'https://aosom.eu/cdn/shop/files/IxOJ2c9O_14veP2gsdYn6gaosomDHxABDCbxJ2CDXwrZ3mCbw.jpg?v=1752755722&width=1240',
+      badge: 'Sale',
+      features: ['Front Ventilation', 'Easy Access', 'Secure Lock'],
       category: 'Terrariums'
     },
     {
       id: 3,
-      name: 'Bearded Dragon Food',
-      brand: 'DragonNutrition',
-      price: 18.99,
+      name: 'Premium Reptile Food Mix',
+      brand: 'NutriReptile',
+      price: 28.99,
       originalPrice: null,
-      rating: 4.7,
-      reviews: 198,
-      image: 'https://images.pexels.com/photos/5998921/pexels-photo-5998921.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Complete Diet',
-      features: ['Pellets & Vegetables', 'Vitamin D3', 'Adult Formula'],
+      rating: 4.6,
+      reviews: 234,
+      image: 'https://images.zoo.se/3208103f-9aac-4610-8758-c93cd9cf90d3?auto=format&q=80&f=webp&w=1050',
+      badge: 'Natural',
+      features: ['All Natural', 'Vitamin Enriched', 'Species Specific'],
       category: 'Food'
     },
     {
       id: 4,
-      name: 'Humidity Control System',
-      brand: 'ClimateKeeper',
-      price: 89.99,
-      originalPrice: 109.99,
-      rating: 4.5,
-      reviews: 67,
-      image: 'https://images.pexels.com/photos/5998918/pexels-photo-5998918.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Smart Control',
-      features: ['Digital Display', 'Auto Adjustment', 'Misting System'],
-      category: 'Climate'
-    },
-    {
-      id: 5,
-      name: 'Natural Substrate Mix',
-      brand: 'EcoGround',
-      price: 14.99,
+      name: 'Desert Substrate Mix',
+      brand: 'HabitatPlus',
+      price: 19.99,
       originalPrice: null,
-      rating: 4.9,
-      reviews: 156,
-      image: 'https://images.pexels.com/photos/6325000/pexels-photo-6325000.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Natural',
-      features: ['Coconut Fiber', 'Drainage Layer', 'Bioactive Ready'],
+      rating: 4.5,
+      reviews: 167,
+      image: 'https://images.zoo.se/966cc231-ca70-494c-a922-b57d6ba0c468?auto=format&q=80&f=webp&w=1050',
+      badge: 'Essential',
+      features: ['Dust Free', 'Natural Color', 'Easy Clean'],
       category: 'Substrate'
     },
     {
-      id: 6,
-      name: 'Climbing Branch Set',
-      brand: 'NaturalHabitat',
-      price: 24.99,
+      id: 5,
+      name: 'Reptile Humidity Controller',
+      brand: 'ClimateControl',
+      price: 89.99,
       originalPrice: null,
+      rating: 4.9,
+      reviews: 67,
+      image: 'https://images.zoo.se/92d35704-832f-4a7f-9a5e-ee3256d89e6a?auto=format&q=80&f=webp&w=1050',
+      badge: 'High-Tech',
+      features: ['Digital Display', 'Auto Adjust', 'Misting System'],
+      category: 'Equipment'
+    },
+    {
+      id: 6,
+      name: 'Natural Rock Hide Cave',
+      brand: 'WildDecor',
+      price: 34.99,
+      originalPrice: 39.99,
       rating: 4.4,
-      reviews: 134,
-      image: 'https://images.pexels.com/photos/5998919/pexels-photo-5998919.jpeg?auto=compress&cs=tinysrgb&w=500',
-      badge: 'Enrichment',
-      features: ['Real Wood', 'Various Sizes', 'Easy Mount'],
-      category: 'Decor'
+      reviews: 198,
+      image: 'https://image.dogman.com/preset:sharp/resize:fit:1000:0:0/width:2000/quality:100/gravity:sm/plain/https://api.dogman.com/storage/products-images/988218/988218_main_0_988218.jpg',
+      badge: 'Naturalistic',
+      features: ['Realistic Look', 'Easy Clean', 'Multiple Sizes'],
+      category: 'Decorations'
     }
   ]
 
+  const filteredProducts = activeCategory === 'All Products' 
+    ? reptileProducts 
+    : reptileProducts.filter(product => product.category === activeCategory)
+
   const categories = [
-    { name: 'All Products', count: reptileProducts.length, active: true },
-    { name: 'Heating', count: 1, active: false },
-    { name: 'Terrariums', count: 1, active: false },
-    { name: 'Food', count: 1, active: false },
-    { name: 'Climate', count: 1, active: false },
-    { name: 'Substrate', count: 1, active: false },
-    { name: 'Decor', count: 1, active: false }
+    { name: 'All Products', count: reptileProducts.length },
+    { name: 'Heating & Lighting', count: reptileProducts.filter(p => p.category === 'Heating').length },
+    { name: 'Terrariums & Habitats', count: reptileProducts.filter(p => p.category === 'Terrariums').length },
+    { name: 'Food & Nutrition', count: reptileProducts.filter(p => p.category === 'Food').length },
+    { name: 'Substrate & Bedding', count: reptileProducts.filter(p => p.category === 'Substrate').length },
+    { name: 'Climate Control', count: reptileProducts.filter(p => p.category === 'Equipment').length },
+    { name: 'Decorations & Hides', count: reptileProducts.filter(p => p.category === 'Decorations').length },
+    { name: 'Health & Supplements', count: 0 },
+    { name: 'Water & Humidity', count: 0 },
+    { name: 'Cleaning & Maintenance', count: 0 },
+    { name: 'Feeding Accessories', count: 0 },
+    { name: 'Monitoring Equipment', count: 0 },
+    { name: 'Transport & Travel', count: 0 }
   ]
 
   return (
     <div className="min-h-screen bg-ui-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-600 to-green-800 text-white py-16">
+      <div className="bg-gradient-to-r from-lime-500 to-lime-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
@@ -110,7 +127,7 @@ const ReptilesPage = () => {
                 🦎 Reptile Supplies
               </h1>
               <p className="text-xl text-white/90 max-w-2xl">
-                Ancient companions, modern care - specialized habitats, precise climate control, and species-specific nutrition.
+                Complete habitat solutions for your scaly friends - from heating systems to natural decorations.
               </p>
             </div>
             <div className="hidden lg:block text-6xl opacity-20">
@@ -133,73 +150,34 @@ const ReptilesPage = () => {
                 {categories.map((category) => (
                   <button
                     key={category.name}
+                    onClick={() => setActiveCategory(category.name)}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center justify-between ${
-                      category.active
+                      activeCategory === category.name
                         ? 'bg-pet-reptile text-white'
                         : 'text-ui-text-secondary hover:bg-ui-muted'
                     }`}
                   >
                     <span>{category.name}</span>
                     <span className={`text-xs px-2 py-1 rounded-full ${
-                      category.active ? 'bg-white/20' : 'bg-ui-muted'
+                      activeCategory === category.name ? 'bg-white/20' : 'bg-ui-muted'
                     }`}>
                       {category.count}
                     </span>
                   </button>
                 ))}
               </div>
-
-              {/* Reptile Type Filter */}
-              <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Reptile Type</h4>
-                <div className="space-y-2">
-                  {['Bearded Dragons', 'Geckos', 'Snakes', 'Turtles', 'Iguanas'].map((type) => (
-                    <label key={type} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{type}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Habitat Type Filter */}
-              <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Habitat Type</h4>
-                <div className="space-y-2">
-                  {['Desert', 'Tropical', 'Temperate', 'Aquatic'].map((habitat) => (
-                    <label key={habitat} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{habitat}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tank Size Filter */}
-              <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Tank Size</h4>
-                <div className="space-y-2">
-                  {['20 Gallon', '40 Gallon', '75 Gallon', '120+ Gallon'].map((size) => (
-                    <label key={size} className="flex items-center">
-                      <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{size}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
           {/* Main Content */}
           <div className="lg:col-span-3">
-            {/* Filters and Sort */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
               <div>
                 <h2 className="text-xl font-semibold text-ui-text-primary">
-                  {reptileProducts.length} Products Found
+                  {filteredProducts.length} Products Found
                 </h2>
                 <p className="text-sm text-ui-text-secondary">
-                  Specialized reptile care solutions
+                  Premium reptile habitat supplies
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -208,7 +186,6 @@ const ReptilesPage = () => {
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
                   <option>Customer Rating</option>
-                  <option>Newest First</option>
                 </select>
                 <div className="flex border border-ui-border rounded-lg">
                   <button className="p-2 bg-pet-reptile text-white rounded-l-lg">
@@ -221,11 +198,9 @@ const ReptilesPage = () => {
               </div>
             </div>
 
-            {/* Products Grid */}
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {reptileProducts.map((product) => (
+              {filteredProducts.map((product) => (
                 <div key={product.id} className="card p-0 hover:scale-105 cursor-pointer overflow-hidden group">
-                  {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={product.image}
@@ -241,18 +216,12 @@ const ReptilesPage = () => {
                         <Heart className="w-4 h-4 text-gray-600 hover:text-red-500" />
                       </button>
                     </div>
-                    {product.originalPrice && (
-                      <div className="absolute bottom-4 left-4 bg-status-error text-white text-xs font-bold px-2 py-1 rounded">
-                        {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
-                      </div>
-                    )}
                   </div>
 
-                  {/* Content */}
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-ui-text-muted font-medium">{product.brand}</span>
-                      <span className="text-xs font-medium text-pet-reptile bg-green-50 px-2 py-1 rounded">
+                      <span className="text-xs font-medium text-pet-reptile bg-lime-50 px-2 py-1 rounded">
                         {product.category}
                       </span>
                     </div>
@@ -297,7 +266,17 @@ const ReptilesPage = () => {
                           </span>
                         )}
                       </div>
-                      <button className="bg-pet-reptile text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2">
+                      <button 
+                        onClick={() => addToCart({
+                          id: product.id,
+                          name: product.name,
+                          price: product.price,
+                          image: product.image,
+                          category: 'Reptiles',
+                          brand: product.brand
+                        })}
+                        className="bg-pet-reptile text-white py-2 px-4 rounded-lg hover:bg-lime-600 transition-colors flex items-center space-x-2"
+                      >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
                       </button>
@@ -307,7 +286,6 @@ const ReptilesPage = () => {
               ))}
             </div>
 
-            {/* Load More */}
             <div className="text-center mt-12">
               <button className="btn-secondary">
                 Load More Products

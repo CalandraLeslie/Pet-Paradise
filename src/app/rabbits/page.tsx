@@ -1,94 +1,131 @@
 'use client'
 
 import Image from 'next/image'
-import { Star, ShoppingCart, Heart, Filter, Grid, List, Percent, Tag } from 'lucide-react'
+import { Star, ShoppingCart, Heart, Filter, Grid, List } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useApp } from '@/context/AppContext'
 
-const SalePage = () => {
+const RabbitsPage = () => {
   const { addToCart } = useApp()
-  const [activeCategory, setActiveCategory] = useState('All Products')
   
-  const saleProducts = [
+  const rabbitProducts = [
     {
-      id: 201,
-      name: 'Premium Dog Food Bundle',
-      brand: 'NutriPet',
-      price: 39.99,
-      originalPrice: 59.99,
+      id: 1,
+      name: 'Timothy Hay Pellets',
+      brand: 'SmallPetNutrition',
+      price: 26.99,
+      originalPrice: 31.99,
       rating: 4.8,
-      reviews: 245,
-      image: 'https://get.musti.media/shops/mse/resources/ftp/productpage/f2/naturesmenu-country-hunter-dog-multipack-12-x-150-g-f2.jpg',
-      badge: '33% OFF',
-      features: ['High Protein', 'Grain Free', 'Natural'],
+      reviews: 189,
+      image: 'https://via.placeholder.com/500x500/DDA0DD/FFFFFF?text=Rabbit+Food',
+      badge: 'Best Seller',
+      features: ['High Fiber', 'Timothy Hay', 'No Added Sugar'],
       category: 'Food'
     },
     {
-      id: 202,
-      name: 'Cat Scratching Tree',
-      brand: 'Feline Furniture',
-      price: 79.99,
-      originalPrice: 119.99,
+      id: 2,
+      name: 'Multi-Level Rabbit Hutch',
+      brand: 'BunnyHomes',
+      price: 149.99,
+      originalPrice: 179.99,
       rating: 4.7,
-      reviews: 156,
-      image: 'https://media.zooplus.com/bilder/3/400/544396_pla_zooplus_basics_cat_tree_medium_grey_fg_3292_3.jpg',
-      badge: '33% OFF',
-      features: ['Multi-Level', 'Sisal Posts', 'Cozy Hideouts'],
-      category: 'Furniture'
+      reviews: 76,
+      image: 'https://via.placeholder.com/500x500/8B4513/FFFFFF?text=Hutch',
+      badge: 'Sale',
+      features: ['Weather Resistant', 'Easy Access', 'Spacious'],
+      category: 'Housing'
     },
     {
-      id: 203,
-      name: 'Bird Cage Starter Kit',
-      brand: 'AvianHome',
-      price: 129.99,
-      originalPrice: 179.99,
+      id: 3,
+      name: 'Natural Willow Chew Toys',
+      brand: 'NatureChew',
+      price: 14.99,
+      originalPrice: null,
       rating: 4.6,
-      reviews: 89,
-      image: 'https://m.media-amazon.com/images/I/61GtQCOqWjL._AC_SX679_.jpg',
-      badge: '28% OFF',
-      features: ['Complete Setup', 'Accessories Included', 'Easy Assembly'],
-      category: 'Cages'
+      reviews: 234,
+      image: 'https://via.placeholder.com/500x500/8B4513/FFFFFF?text=Chew+Toys',
+      badge: 'Natural',
+      features: ['Dental Health', 'Safe Materials', 'Entertaining'],
+      category: 'Toys'
+    },
+    {
+      id: 4,
+      name: 'Soft Paper Bedding',
+      brand: 'ComfortNest',
+      price: 19.99,
+      originalPrice: null,
+      rating: 4.5,
+      reviews: 156,
+      image: 'https://via.placeholder.com/500x500/F5F5F5/000000?text=Bedding',
+      badge: 'Absorbent',
+      features: ['Dust Free', 'Odor Control', 'Biodegradable'],
+      category: 'Bedding'
+    },
+    {
+      id: 5,
+      name: 'Ceramic Food & Water Bowls',
+      brand: 'BunnyFeeding',
+      price: 22.99,
+      originalPrice: 27.99,
+      rating: 4.4,
+      reviews: 98,
+      image: 'https://via.placeholder.com/500x500/4A90E2/FFFFFF?text=Bowls',
+      badge: 'Durable',
+      features: ['Heavy Base', 'Easy Clean', 'Chew Resistant'],
+      category: 'Accessories'
+    },
+    {
+      id: 6,
+      name: 'Vitamin C Treats',
+      brand: 'HealthyTreats',
+      price: 12.99,
+      originalPrice: null,
+      rating: 4.7,
+      reviews: 167,
+      image: 'https://via.placeholder.com/500x500/7CB342/FFFFFF?text=Treats',
+      badge: 'Healthy',
+      features: ['Vitamin Enriched', 'Natural Fruits', 'No Preservatives'],
+      category: 'Treats'
     }
   ]
 
-  const filteredProducts = activeCategory === 'All Products' 
-    ? saleProducts 
-    : saleProducts.filter(product => product.category === activeCategory)
-
   const categories = [
-    { name: 'All Products', count: saleProducts.length },
-    { name: 'Food & Nutrition', count: saleProducts.filter(p => p.category === 'Food').length },
-    { name: 'Toys & Entertainment', count: saleProducts.filter(p => p.category === 'Toys').length },
-    { name: 'Furniture & Accessories', count: saleProducts.filter(p => p.category === 'Furniture').length },
-    { name: 'Cages & Housing', count: saleProducts.filter(p => p.category === 'Cages').length },
-    { name: 'Health & Care', count: 0 },
-    { name: 'Grooming & Hygiene', count: 0 },
-    { name: 'Travel & Transport', count: 0 }
+    { name: 'All Products', count: rabbitProducts.length, active: true },
+    { name: 'Food & Hay', count: 1, active: false },
+    { name: 'Hutches & Housing', count: 1, active: false },
+    { name: 'Bedding & Litter', count: 1, active: false },
+    { name: 'Toys & Chews', count: 1, active: false },
+    { name: 'Exercise & Play', count: 1, active: false },
+    { name: 'Grooming & Care', count: 1, active: false },
+    { name: 'Health & Supplements', count: 1, active: false },
+    { name: 'Feeding Accessories', count: 1, active: false },
+    { name: 'Travel & Transport', count: 1, active: false },
+    { name: 'Outdoor & Garden', count: 1, active: false },
+    { name: 'Cleaning & Maintenance', count: 1, active: false }
   ]
 
   return (
     <div className="min-h-screen bg-ui-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-500 to-red-700 text-white py-16">
+      <div className="bg-gradient-to-r from-purple-400 to-purple-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
               <nav className="flex items-center space-x-2 text-sm mb-4">
                 <Link href="/" className="text-white/80 hover:text-white">Home</Link>
                 <span className="text-white/60">/</span>
-                <span className="text-white">Sale</span>
+                <span className="text-white">Rabbits</span>
               </nav>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 flex items-center">
-                <Percent className="w-12 h-12 mr-4" />
-                Sale Items
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                🐰 Rabbit Supplies
               </h1>
               <p className="text-xl text-white/90 max-w-2xl">
-                Amazing deals on premium pet supplies - save up to 50% on selected items!
+                Everything your bunny needs - from nutritious pellets to cozy hutches and engaging chew toys.
               </p>
             </div>
             <div className="hidden lg:block text-6xl opacity-20">
-              🏷️
+              🐰
             </div>
           </div>
         </div>
@@ -100,23 +137,22 @@ const SalePage = () => {
           <div className="lg:col-span-1">
             <div className="card p-6 sticky top-4">
               <h3 className="font-semibold text-ui-text-primary mb-4 flex items-center">
-                <Filter className="w-5 h-5 mr-2 text-red-500" />
+                <Filter className="w-5 h-5 mr-2 text-pet-rabbit" />
                 Categories
               </h3>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <button
                     key={category.name}
-                    onClick={() => setActiveCategory(category.name)}
                     className={`w-full text-left px-3 py-2 rounded-lg transition-colors flex items-center justify-between ${
-                      activeCategory === category.name
-                        ? 'bg-red-500 text-white'
+                      category.active
+                        ? 'bg-pet-rabbit text-white'
                         : 'text-ui-text-secondary hover:bg-ui-muted'
                     }`}
                   >
                     <span>{category.name}</span>
                     <span className={`text-xs px-2 py-1 rounded-full ${
-                      activeCategory === category.name ? 'bg-white/20' : 'bg-ui-muted'
+                      category.active ? 'bg-white/20' : 'bg-ui-muted'
                     }`}>
                       {category.count}
                     </span>
@@ -124,14 +160,27 @@ const SalePage = () => {
                 ))}
               </div>
 
-              {/* Discount Filter */}
+              {/* Price Filter */}
               <div className="mt-8">
-                <h4 className="font-semibold text-ui-text-primary mb-4">Discount</h4>
+                <h4 className="font-semibold text-ui-text-primary mb-4">Price Range</h4>
                 <div className="space-y-2">
-                  {['20% or more', '30% or more', '40% or more', '50% or more'].map((discount) => (
-                    <label key={discount} className="flex items-center">
+                  {['Under $20', '$20 - $40', '$40 - $80', 'Over $80'].map((range) => (
+                    <label key={range} className="flex items-center">
                       <input type="checkbox" className="mr-2" />
-                      <span className="text-sm text-ui-text-secondary">{discount}</span>
+                      <span className="text-sm text-ui-text-secondary">{range}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Brand Filter */}
+              <div className="mt-8">
+                <h4 className="font-semibold text-ui-text-primary mb-4">Brand</h4>
+                <div className="space-y-2">
+                  {['SmallPetNutrition', 'BunnyHomes', 'NatureChew', 'ComfortNest'].map((brand) => (
+                    <label key={brand} className="flex items-center">
+                      <input type="checkbox" className="mr-2" />
+                      <span className="text-sm text-ui-text-secondary">{brand}</span>
                     </label>
                   ))}
                 </div>
@@ -144,21 +193,22 @@ const SalePage = () => {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
               <div>
                 <h2 className="text-xl font-semibold text-ui-text-primary">
-                  {filteredProducts.length} Sale Items
+                  {rabbitProducts.length} Products Found
                 </h2>
                 <p className="text-sm text-ui-text-secondary">
-                  Limited time offers - save big on premium pet supplies!
+                  Premium rabbit supplies for happy bunnies
                 </p>
               </div>
               <div className="flex items-center space-x-4">
-                <select className="px-4 py-2 border border-ui-border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
-                  <option>Sort by: Biggest Savings</option>
+                <select className="px-4 py-2 border border-ui-border rounded-lg focus:outline-none focus:ring-2 focus:ring-pet-rabbit">
+                  <option>Sort by: Featured</option>
                   <option>Price: Low to High</option>
                   <option>Price: High to Low</option>
                   <option>Customer Rating</option>
+                  <option>Newest First</option>
                 </select>
                 <div className="flex border border-ui-border rounded-lg">
-                  <button className="p-2 bg-red-500 text-white rounded-l-lg">
+                  <button className="p-2 bg-pet-rabbit text-white rounded-l-lg">
                     <Grid className="w-4 h-4" />
                   </button>
                   <button className="p-2 text-ui-text-secondary hover:bg-ui-muted rounded-r-lg">
@@ -169,7 +219,7 @@ const SalePage = () => {
             </div>
 
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
+              {rabbitProducts.map((product) => (
                 <div key={product.id} className="card p-0 hover:scale-105 cursor-pointer overflow-hidden group">
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -178,7 +228,7 @@ const SalePage = () => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 bg-pet-rabbit text-white text-xs font-bold px-3 py-1 rounded-full">
                       {product.badge}
                     </div>
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -186,16 +236,17 @@ const SalePage = () => {
                         <Heart className="w-4 h-4 text-gray-600 hover:text-red-500" />
                       </button>
                     </div>
-                    <div className="absolute bottom-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded flex items-center">
-                      <Tag className="w-3 h-3 mr-1" />
-                      SALE
-                    </div>
+                    {product.originalPrice && (
+                      <div className="absolute bottom-4 left-4 bg-status-error text-white text-xs font-bold px-2 py-1 rounded">
+                        {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-ui-text-muted font-medium">{product.brand}</span>
-                      <span className="text-xs font-medium text-red-500 bg-red-50 px-2 py-1 rounded">
+                      <span className="text-xs font-medium text-pet-rabbit bg-purple-50 px-2 py-1 rounded">
                         {product.category}
                       </span>
                     </div>
@@ -234,9 +285,11 @@ const SalePage = () => {
                         <span className="text-xl font-bold text-ui-text-primary">
                           ${product.price}
                         </span>
-                        <span className="text-sm text-ui-text-muted line-through">
-                          ${product.originalPrice}
-                        </span>
+                        {product.originalPrice && (
+                          <span className="text-sm text-ui-text-muted line-through">
+                            ${product.originalPrice}
+                          </span>
+                        )}
                       </div>
                       <button 
                         onClick={() => addToCart({
@@ -244,10 +297,10 @@ const SalePage = () => {
                           name: product.name,
                           price: product.price,
                           image: product.image,
-                          category: 'Sale',
+                          category: 'Rabbits',
                           brand: product.brand
                         })}
-                        className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors flex items-center space-x-2"
+                        className="bg-pet-rabbit text-white py-2 px-4 rounded-lg hover:bg-purple-500 transition-colors flex items-center space-x-2"
                       >
                         <ShoppingCart className="w-4 h-4" />
                         <span>Add</span>
@@ -260,7 +313,7 @@ const SalePage = () => {
 
             <div className="text-center mt-12">
               <button className="btn-secondary">
-                Load More Sale Items
+                Load More Products
               </button>
             </div>
           </div>
@@ -270,4 +323,4 @@ const SalePage = () => {
   )
 }
 
-export default SalePage
+export default RabbitsPage
